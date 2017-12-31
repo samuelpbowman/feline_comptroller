@@ -2,3 +2,6 @@ feline_comptroller.xml
 feline_comptroller*.xml
 .git
 .gitignore
+*.log
+*.out
+sample_imgur_album.txt
