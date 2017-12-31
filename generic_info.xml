@@ -1,0 +1,12 @@
+<?xml version="1.0" ?>
+<reddit>
+  <client_id></client_id/>
+  <client_secret></client_secret/>
+  <username></username>
+  <password></password>
+</reddit>
+<imgur>
+  <client_id></client_id>
+  <client_secret></client_secret>
+  <refresh_token></refresh_token>
+</imgur>
