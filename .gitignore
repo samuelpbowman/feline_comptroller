@@ -1,3 +1,4 @@
 feline_comptroller.xml
 feline_comptroller*.xml
 .git
+.gitignore

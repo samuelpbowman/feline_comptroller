@@ -1,32 +1,30 @@
 require 'redd'
-require_relative 'imgur_wrapper/imgur_wrapper'
 require 'nokogiri'
+require_relative 'imgur_wrapper/imgur_wrapper'
 
 doc = Nokogiri::XML(File.open("feline_comptroller.xml"))
-# puts doc.css("reddit client_id").text
 
 session = Redd.it(
   user_agent: 'FelineComptroller:v1.0.0 (by /u/chang3up)',
-  client_id:  doc.css("reddit client_id").text,
-  secret:     doc.css("reddit client_secret").text,
-  username:   doc.css("reddit username").text,
-  password:   doc.css("reddit password").text
+  client_id:  doc.css("api_data reddit client_id").text,
+  secret:     doc.css("api_data reddit client_secret").text,
+  username:   doc.css("api_data reddit username").text,
+  password:   doc.css("api_data reddit password").text
 )
 
-client_id = doc.css("imgur client_id").text
-client_secret = doc.css("imgur client_secret").text
-refresh_token = doc.css("imgur refresh_token").text
+client_id = doc.css("api_data imgur client_id").text
+client_secret = doc.css("api_data imgur client_secret").text
+refresh_token = doc.css("api_data imgur refresh_token").text
 
 wrapper = ImgurWrapper.new(client_id)
 
 r_all = session.subreddit('all')
-r_all.posts.each do |post|
-  if post.domain == "imgur.com"
-=begin
-    album = wrapper.gallery_album(post.url)
-    puts album.to_s
-    break
-=end
+r_all.hot.each do |submission|
+  if submission.domain == "imgur.com"
+    album = wrapper.gallery_album(submission.url[18..-1])
+    if album["success"]
+      # TODO things
+    end
   end
 end
 
