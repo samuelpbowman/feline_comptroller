@@ -1,9 +1,4 @@
 <?xml version="1.0" ?>
-<!--
-Fill in each innermost item with the applicable
-item. Most of these can be found when registering
-your app with the respective providers.
--->
 <api_data>
   <reddit>
     <client_id></client_id/>
