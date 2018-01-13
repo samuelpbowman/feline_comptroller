@@ -1,6 +1,7 @@
 require 'redd'
 require 'nokogiri'
 require_relative 'imgur_wrapper/imgur_wrapper'
+require_relative 'reply_generator/reply_generator.rb'
 
 doc = Nokogiri::XML(File.open("feline_comptroller.xml"))
 
@@ -16,6 +17,7 @@ client_id = doc.css("api_data imgur client_id").text
 client_secret = doc.css("api_data imgur client_secret").text
 
 wrapper = ImgurWrapper.new(client_id)
+generator = ReplyGenerator.new(wrapper)
 tax_paid = false
 
 r_all = session.subreddit('testingground4bots')
@@ -25,21 +27,15 @@ r_all.hot.each do |submission|
     if album["success"]
       images = album["data"]["images"]
       images.each do |image|
-        if image["description"].include? "tax"
-          unless submission.get_flair == "Serious"
-            tax_paid = true
-          end
+        #unless submission.get_flair.casecmp("serious").zero?
+        if image["description"].to_s.include? "tax"
+          tax_paid = true
         end
+        #end
       end
     end
-    if !tax_paid
-      unless have_commented(submission)
-        submission.reply(generate_message(""))
-      end
+    unless tax_paid
+      submission.reply(generator.generate_message)
     end
   end
-end
-
-def generate_message(link)
-  # TODO things
 end
