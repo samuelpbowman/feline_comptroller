@@ -28,3 +28,9 @@ you use RubyGems. All Imgur web calls are written freehand here.
 
 Using the provided `generic_info.xml`, simply add your API keys for Reddit
 and Imgur and save as "feline_comptroller.xml".
+
+### Running the bot
+
+Run the command, adding the name of the desired subreddit at the end
+
+`ruby feline_comptroller.rb [subreddit]`
