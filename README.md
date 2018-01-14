@@ -1,7 +1,7 @@
 # The Feline Comptroller
 ### A Reddit bot created to enforce Imgur's Cat Tax
 
-The Cat Tax (or Dog Tax, or even Snake Tax) is an Imgur convention which   
+The Cat Tax (or Dog Tax, or even Snake Tax) is an Imgur convention which
 compels users to place a photo of their pet at the end of an album. Seeing
 as there can never be enough animal pictures, Imgurians far and wide have
 shared their furry friends with the world even more. Inspired by this
