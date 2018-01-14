@@ -17,7 +17,7 @@ picture to satisfy the Tax.
 
 ### Configuring for personal use
 
-The latest Ruby this project has been tested on is `2.4.1`. The gems
+The latest Ruby this project has been tested on is `2.5.0`. The gems
 - json
 - net
 - url
